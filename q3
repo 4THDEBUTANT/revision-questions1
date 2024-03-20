@@ -1,0 +1,61 @@
+import datetime
+
+class BankAccount:
+    def __init__(self, account_number, balance, customer_name, date_of_opening):
+        self.account_number = account_number
+        self.balance = balance
+        self.customer_name = customer_name
+        self.date_of_opening = date_of_opening
+
+    def deposit(self, amount):
+        """
+        Deposit funds into the account.
+
+        Args:
+        amount (float): The amount to deposit.
+
+        Returns:
+        float: The amount deposited.
+        """
+        self.balance += amount
+        return amount
+
+    def withdraw(self, amount):
+        """
+        Withdraw funds from the account.
+
+        Args:
+        amount (float): The amount to withdraw.
+
+        Returns:
+        float or str: The amount withdrawn or "Insufficient balance" if balance is less than amount.
+        """
+        if self.balance >= amount:
+            self.balance -= amount
+            return amount
+        else:
+            return "Insufficient balance"
+
+    def check_balance(self):
+        """Print the current balance."""
+        print("Current balance:", self.balance)
+
+    def customer_details(self):
+        """Print customer details."""
+        print("Customer Name:", self.customer_name)
+        print("Account Number:", self.account_number)
+        print("Date of Opening:", self.date_of_opening)
+        print("Balance:", self.balance)
+
+# Create an instance of BankAccount
+account = BankAccount(account_number="123456789", balance=1000.0, customer_name="John Kimani", date_of_opening=datetime.date(2022, 1, 1))
+
+# Perform operations
+print("Deposit:", account.deposit(500))
+print("Withdraw:", account.withdraw(300))
+print("Withdraw:", account.withdraw(1500))  
+
+# Trying to withdraw more than balance
+account.check_balance()
+print("Customer Details:")
+account.customer_details()
