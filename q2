@@ -1,0 +1,56 @@
+def add_product(product_name, price, quantity):
+    """
+    Create a dictionary object for a product with the given parameters.
+    
+    Args:
+    product_name (string): Name of the product.
+    price (float): Price of the product.
+    quantity (int): Initial quantity of the product in stock.
+    
+    Returns:
+    dict: Dictionary object representing the product.
+    """
+    product = {
+        'product_name': product_name,
+        'price': price,
+        'quantity': quantity
+    }
+    return product
+
+def update_price(product, new_price):
+    """
+    Update the price of a product in the dictionary.
+    
+    Args:
+    product (dict): Dictionary object representing the product.
+    new_price (float): Updated price of the product.
+    
+    Returns:
+    dict: Modified dictionary object representing the product.
+    """
+    product['price'] = new_price
+    return product
+
+def update_quantity(product, quantity_change):
+    """
+    Update the quantity of a product in the dictionary.
+    
+    Args:
+    product (dict): Dictionary object representing the product.
+    quantity_change (int): Change in quantity of the product (positive for addition, negative for subtraction).
+    
+    Returns:
+    dict: Modified dictionary object representing the product.
+    """
+    product['quantity'] += quantity_change
+    return product
+
+# Example usage:
+product = add_product("Laptop", 999.99, 10)
+print("Initial product:", product)
+
+product = update_price(product, 899.99)
+print("Product after price update:", product)
+
+product = update_quantity(product, -3)
+print("Product after quantity update:", product)
